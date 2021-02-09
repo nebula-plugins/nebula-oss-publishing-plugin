@@ -3,6 +3,7 @@ nebula-oss-publishing-plugin
 
 
 ![Support Status](https://img.shields.io/badge/nebula-active-green.svg)
+[![Gradle Plugin Portal](https://img.shields.io/maven-metadata/v/https/plugins.gradle.org/m2/com.netflix.nebula/nebula-oss-publishing-plugin/maven-metadata.xml.svg?label=gradlePluginPortal)](https://plugins.gradle.org/plugin/nebula.oss-publishing)
 [![Build Status](https://travis-ci.com/nebula-plugins/nebula-oss-publishing-plugin.svg)](https://travis-ci.com/nebula-plugins/nebula-oss-publishing-plugin)
 [![Coverage Status](https://coveralls.io/repos/nebula-plugins/nebula-oss-publishing-plugin/badge.svg?branch=master&service=github)](https://coveralls.io/github/nebula-plugins/nebula-oss-publishing-plugin?branch=master)
 [![Apache 2.0](https://img.shields.io/github/license/nebula-plugins/nebula-oss-publishing-plugin.svg)](http://www.apache.org/licenses/LICENSE-2.0)
