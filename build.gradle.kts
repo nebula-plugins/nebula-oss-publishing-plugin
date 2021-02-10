@@ -34,10 +34,10 @@ contacts {
     people.set("roberto@perezalcolea.info", contact)
 }
 
-
 dependencies {
     implementation("de.marcphilipp.gradle:nexus-publish-plugin:0.4.0")
     implementation("io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.22.0")
+    testImplementation("io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.22.0")
     constraints {
         val kotlinVersion by extra("1.4.30")
         implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")

@@ -15,20 +15,30 @@
  */
 package nebula.plugin.publishing
 
-import nebula.test.PluginProjectSpec
+import nebula.test.IntegrationSpec
+import org.gradle.api.plugins.JavaPlugin
 
-class NebulaOssPublishingPluginSpec extends PluginProjectSpec {
-    @Override
-    String getPluginName() {
-        'nebula.oss-publishing'
+class NebulaOssPublishingPluginSpec extends IntegrationSpec {
+
+    def 'Apply plugin without failures'() {
+        buildFile << """
+            plugins {
+              id "nebula.maven-publish" version "17.3.2"
+            }
+
+            group = 'test'
+            ${applyPlugin(JavaPlugin)}
+            ${applyPlugin(NebulaOssPublishingPlugin)}
+            
+            nebulaOssPublishing {
+                netflixOssRepositoryBaseUrl = "http://"
+                netflixOssRepository = "my-releases"
+                netflixOssUsername = "user"
+                netflixOssPassword = "password"               
+            }
+        """.stripIndent()
+
+        expect:
+        runTasksSuccessfully('build')
     }
-
-    def 'apply plugin'() {
-        when:
-        project.plugins.apply(NebulaOssPublishingPlugin)
-
-        then:
-        true
-    }
-
 }
