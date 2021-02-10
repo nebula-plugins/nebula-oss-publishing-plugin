@@ -33,6 +33,12 @@ class NebulaOssRepositoriesPlugin : Plugin<Project> {
         val nebulaOssPublishingExtension = project.rootProject.extensions.findByType(NebulaOssPublishingExtension::class.java) ?: project.rootProject.extensions.create("nebulaOssPublishing", NebulaOssPublishingExtension::class.java)
         project.plugins.withId("nebula.maven-publish") {
             project.afterEvaluate {
+                if(!nebulaOssPublishingExtension.netflixOssRepositoryBaseUrl.isPresent
+                    || !nebulaOssPublishingExtension.netflixOssRepository.isPresent
+                    || !nebulaOssPublishingExtension.netflixOssUsername.isPresent
+                    || !nebulaOssPublishingExtension.netflixOssPassword.isPresent) {
+                    return@afterEvaluate
+                }
                 project.extensions.configure<PublishingExtension> {
                     repositories {
                         maven {
