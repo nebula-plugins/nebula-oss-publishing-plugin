@@ -31,6 +31,7 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
         const val netflixOssSnapshotsRepository = "maven-oss-snapshots"
         const val netflixOssCandidatesRepository = "maven-oss-candidates"
         const val netflixOssReleasesRepository = "maven-oss-releases"
+        const val signingKeyFileLocation = "secrets/signing-key"
     }
 
     override fun apply(project: Project) {
@@ -80,14 +81,19 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
     }
 
     private fun setSigningKey(extension: NebulaOssPublishingExtension, project: Project) {
-        val signingKey = findPropertyValue(
-            project,
-            "NETFLIX_OSS_SIGNING_KEY",
-            "sonatype.signingKey",
-            "netflixOssSigningKey"
-        )
-        if(!signingKey.isNullOrBlank()) {
-            extension.signingKey.convention(signingKey)
+        val signingKeyFile = project.rootProject.file(signingKeyFileLocation)
+        if(signingKeyFile.exists()) {
+            extension.signingKey.convention(signingKeyFile.readText())
+        } else {
+            val signingKey = findPropertyValue(
+                project,
+                "NETFLIX_OSS_SIGNING_KEY",
+                "sonatype.signingKey",
+                "netflixOssSigningKey"
+            )
+            if(!signingKey.isNullOrBlank()) {
+                extension.signingKey.convention(signingKey)
+            }
         }
     }
 
