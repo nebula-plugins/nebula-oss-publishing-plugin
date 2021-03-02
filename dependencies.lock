@@ -1,10 +1,7 @@
 {
     "compileClasspath": {
-        "de.marcphilipp.gradle:nexus-publish-plugin": {
-            "locked": "0.4.0"
-        },
-        "io.codearte.gradle.nexus:gradle-nexus-staging-plugin": {
-            "locked": "0.22.0"
+        "io.github.gradle-nexus:publish-plugin": {
+            "locked": "1.0.0"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
@@ -30,11 +27,8 @@
         }
     },
     "implementationDependenciesMetadata": {
-        "de.marcphilipp.gradle:nexus-publish-plugin": {
-            "locked": "0.4.0"
-        },
-        "io.codearte.gradle.nexus:gradle-nexus-staging-plugin": {
-            "locked": "0.22.0"
+        "io.github.gradle-nexus:publish-plugin": {
+            "locked": "1.0.0"
         }
     },
     "integTestApiDependenciesMetadata": {
@@ -46,11 +40,8 @@
         "com.netflix.nebula:nebula-test": {
             "locked": "7.10.2"
         },
-        "de.marcphilipp.gradle:nexus-publish-plugin": {
-            "locked": "0.4.0"
-        },
-        "io.codearte.gradle.nexus:gradle-nexus-staging-plugin": {
-            "locked": "0.22.0"
+        "io.github.gradle-nexus:publish-plugin": {
+            "locked": "1.0.0"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
@@ -68,11 +59,8 @@
         "com.netflix.nebula:nebula-test": {
             "locked": "7.10.2"
         },
-        "de.marcphilipp.gradle:nexus-publish-plugin": {
-            "locked": "0.4.0"
-        },
-        "io.codearte.gradle.nexus:gradle-nexus-staging-plugin": {
-            "locked": "0.22.0"
+        "io.github.gradle-nexus:publish-plugin": {
+            "locked": "1.0.0"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
@@ -110,22 +98,16 @@
         }
     },
     "runtimeClasspath": {
-        "de.marcphilipp.gradle:nexus-publish-plugin": {
-            "locked": "0.4.0"
-        },
-        "io.codearte.gradle.nexus:gradle-nexus-staging-plugin": {
-            "locked": "0.22.0"
+        "io.github.gradle-nexus:publish-plugin": {
+            "locked": "1.0.0"
         }
     },
     "testCompileClasspath": {
         "com.netflix.nebula:nebula-test": {
             "locked": "7.10.2"
         },
-        "de.marcphilipp.gradle:nexus-publish-plugin": {
-            "locked": "0.4.0"
-        },
-        "io.codearte.gradle.nexus:gradle-nexus-staging-plugin": {
-            "locked": "0.22.0"
+        "io.github.gradle-nexus:publish-plugin": {
+            "locked": "1.0.0"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
@@ -138,11 +120,8 @@
         "com.netflix.nebula:nebula-test": {
             "locked": "7.10.2"
         },
-        "de.marcphilipp.gradle:nexus-publish-plugin": {
-            "locked": "0.4.0"
-        },
-        "io.codearte.gradle.nexus:gradle-nexus-staging-plugin": {
-            "locked": "0.22.0"
+        "io.github.gradle-nexus:publish-plugin": {
+            "locked": "1.0.0"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
@@ -155,11 +134,8 @@
         "com.netflix.nebula:nebula-test": {
             "locked": "7.10.2"
         },
-        "de.marcphilipp.gradle:nexus-publish-plugin": {
-            "locked": "0.4.0"
-        },
-        "io.codearte.gradle.nexus:gradle-nexus-staging-plugin": {
-            "locked": "0.22.0"
+        "io.github.gradle-nexus:publish-plugin": {
+            "locked": "1.0.0"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
