@@ -27,11 +27,11 @@ description = "Nebula Netflix OSS Publishing plugin"
 
 group = "com.netflix.nebula"
 
-val contact = Contact("roberto@perezalcolea.info")
-contact.moniker = "Roberto Perez"
-contact.github = "rpalcolea"
+val contact = Contact("nebula-plugins-oss@netflix.com")
+contact.moniker = "Neubla Plugins Maintainers"
+contact.github = "nebula-plugins"
 contacts {
-    people.set("roberto@perezalcolea.info", contact)
+    people.set("rnebula-plugins-oss@netflix.com", contact)
 }
 
 dependencies {
