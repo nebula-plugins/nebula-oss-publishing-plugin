@@ -39,7 +39,7 @@ class MavenCentralPublishingPlugin : Plugin<Project> {
             return
         }
 
-        if (!isFinalRelease(project)) {
+        if (!isFinalRelease(project) || isCandidateReleaseAndPublishingToMavenCentralIsEnabled(project)) {
             return
         }
 
@@ -84,4 +84,27 @@ class MavenCentralPublishingPlugin : Plugin<Project> {
     private fun isFinalRelease(project: Project): Boolean {
         return project.gradle.startParameter.taskNames.contains("final") || project.gradle.startParameter.taskNames.contains(":final")
     }
+
+    private fun isCandidateReleaseAndPublishingToMavenCentralIsEnabled(project: Project): Boolean {
+        val isCandidate = project.gradle.startParameter.taskNames.contains("candidate") || project.gradle.startParameter.taskNames.contains(":candidate")
+        val publishCandidateToMavenCentral = checkPublishCandidateToMavenCentral(project)
+        return isCandidate && publishCandidateToMavenCentral
+    }
+
+
+    private fun checkPublishCandidateToMavenCentral(project: Project) : Boolean {
+        if(project.hasProperty("netflixossAltCandidateRepo")) {
+            val netflixossAltCandidateRepo = project.property("netflixossAltCandidateRepo").toString().toBoolean()
+            if(!netflixossAltCandidateRepo) {
+                return true
+            }
+        }
+
+        if(project.hasProperty("netflixossPublishCandidatesToMavenCentral")) {
+            return project.property("netflixossPublishCandidatesToMavenCentral").toString().toBoolean()
+        }
+
+        return false
+    }
+
 }
