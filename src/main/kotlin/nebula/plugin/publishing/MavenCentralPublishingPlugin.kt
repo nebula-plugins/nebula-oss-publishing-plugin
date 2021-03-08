@@ -39,7 +39,7 @@ class MavenCentralPublishingPlugin : Plugin<Project> {
             return
         }
 
-        if (!isFinalRelease(project) || isCandidateReleaseAndPublishingToMavenCentralIsEnabled(project)) {
+        if (!isFinalRelease(project) && !isCandidateReleaseAndPublishingToMavenCentralIsEnabled(project)) {
             return
         }
 
