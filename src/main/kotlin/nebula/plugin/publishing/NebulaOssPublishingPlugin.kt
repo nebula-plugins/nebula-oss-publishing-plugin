@@ -32,6 +32,7 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
         const val netflixOssCandidatesRepository = "maven-oss-candidates"
         const val netflixOssReleasesRepository = "maven-oss-releases"
         const val signingKeyFileLocation = "secrets/signing-key"
+        const val netflixDefaultStagingProfile = "e84fb1d021017" //used for com.netflix
     }
 
     override fun apply(project: Project) {
@@ -61,8 +62,9 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
             "NETFLIX_OSS_SONATYPE_STAGING_PROFILE_ID",
             "sonatype.stagingProfileId",
             "sonatypeStagingProfileId"
-        )
-        if(!stagingProfileId.isNullOrBlank()) {
+        ) ?: netflixDefaultStagingProfile
+
+        if(!stagingProfileId.isNotBlank()) {
             extension.stagingProfileId.convention(stagingProfileId)
         }
     }
