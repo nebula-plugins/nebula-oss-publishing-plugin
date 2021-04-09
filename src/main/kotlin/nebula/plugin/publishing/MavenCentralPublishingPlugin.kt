@@ -17,9 +17,12 @@ package nebula.plugin.publishing
 
 import io.github.gradlenexus.publishplugin.NexusPublishExtension
 import io.github.gradlenexus.publishplugin.NexusPublishPlugin
+import nebula.plugin.publishing.pom.VerifyPomForMavenCentralTask
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.tasks.GenerateMavenPom
 import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
 import org.gradle.kotlin.dsl.*
 import java.net.URI
@@ -32,14 +35,23 @@ class MavenCentralPublishingPlugin : Plugin<Project> {
         const val closeAndPromoteRepositoryTaskName = "closeAndReleaseSonatypeStagingRepository"
         const val sonatypeOssRepositoryUrl = "https://oss.sonatype.org/service/local/"
         const val nebulaMavenPublishPluginId = "nebula.maven-publish"
+        const val nebulaPublicationName = "nebula"
     }
 
     override fun apply(project: Project) {
-        if (project.rootProject != project) {
+        if (!isFinalRelease(project.rootProject) && !isCandidateReleaseAndPublishingToMavenCentralIsEnabled(project.rootProject)) {
             return
         }
 
-        if (!isFinalRelease(project) && !isCandidateReleaseAndPublishingToMavenCentralIsEnabled(project)) {
+        if (project.rootProject != project) {
+            /**
+             * When the project isn't the root one, just configure the POM verification
+             */
+            project.afterEvaluate {
+                project.plugins.withId(nebulaMavenPublishPluginId) {
+                    configureMavenCentralPomVerification(project)
+                }
+            }
             return
         }
 
@@ -61,6 +73,10 @@ class MavenCentralPublishingPlugin : Plugin<Project> {
 
         project.afterEvaluate {
             project.plugins.withId(nebulaMavenPublishPluginId) {
+                /**
+                 * Configuration POM verification for Maven Central
+                 */
+                configureMavenCentralPomVerification(project)
                 project.rootProject.tasks.named("postRelease").configure {
                     project.subprojects.forEach { subproject ->
                         this.dependsOn(subproject.tasks.withType(PublishToMavenRepository::class.java))
@@ -77,6 +93,32 @@ class MavenCentralPublishingPlugin : Plugin<Project> {
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private fun configureMavenCentralPomVerification(project: Project) {
+        val publishingExtension = project.extensions.findByType(PublishingExtension::class) ?: return
+        val publications = publishingExtension.publications.asMap
+        if(!publications.containsKey(nebulaPublicationName)) {
+            return
+        }
+        val nebulaPublication = publications[nebulaPublicationName]
+        val generateMavenPomTask = project.tasks.findByName("generatePomFileFor${nebulaPublicationName.capitalize()}Publication")
+            ?: return
+
+        val verifyPomForMavenCentralTask = project.tasks.register("verify${nebulaPublicationName.capitalize()}PublicationPomForMavenCentral", VerifyPomForMavenCentralTask::class) {
+            group = "Publishing"
+            description = "Verifies $nebulaPublication POM can be published to Maven Central"
+            pomFile.set((generateMavenPomTask as GenerateMavenPom).destination)
+            dependsOn(generateMavenPomTask)
+        }
+       project.rootProject.tasks.named("release").configure {
+            dependsOn(verifyPomForMavenCentralTask)
+        }
+        project.plugins.withId("com.gradle.plugin-publish") {
+            project.tasks.named("publishPlugins").configure {
+                dependsOn(verifyPomForMavenCentralTask)
             }
         }
     }

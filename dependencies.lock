@@ -3,6 +3,9 @@
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
         },
+        "org.apache.maven:maven-model": {
+            "locked": "3.6.2"
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
         },
@@ -29,6 +32,9 @@
     "implementationDependenciesMetadata": {
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
+        },
+        "org.apache.maven:maven-model": {
+            "locked": "3.6.2"
         }
     },
     "integTestApiDependenciesMetadata": {
@@ -42,6 +48,9 @@
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
+        },
+        "org.apache.maven:maven-model": {
+            "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
@@ -61,6 +70,9 @@
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
+        },
+        "org.apache.maven:maven-model": {
+            "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
@@ -100,6 +112,9 @@
     "runtimeClasspath": {
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
+        },
+        "org.apache.maven:maven-model": {
+            "locked": "3.6.2"
         }
     },
     "testCompileClasspath": {
@@ -108,6 +123,9 @@
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
+        },
+        "org.apache.maven:maven-model": {
+            "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
@@ -123,6 +141,9 @@
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
         },
+        "org.apache.maven:maven-model": {
+            "locked": "3.6.2"
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
         },
@@ -136,6 +157,9 @@
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
+        },
+        "org.apache.maven:maven-model": {
+            "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.4.30"
