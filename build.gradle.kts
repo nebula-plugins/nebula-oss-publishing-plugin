@@ -36,6 +36,7 @@ contacts {
 
 dependencies {
     implementation("io.github.gradle-nexus:publish-plugin:1.0.0")
+    implementation("org.apache.maven:maven-model:3.6.2")
     constraints {
         val kotlinVersion by extra("1.4.30")
         implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
