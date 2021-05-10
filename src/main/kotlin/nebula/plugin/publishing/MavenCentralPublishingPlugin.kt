@@ -21,16 +21,18 @@ import nebula.plugin.publishing.pom.VerifyPomForMavenCentralTask
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.provider.ProviderFactory
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.tasks.GenerateMavenPom
 import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
 import org.gradle.kotlin.dsl.*
 import java.net.URI
+import javax.inject.Inject
 
 /**
  * Configures publication to staging repo in sonatype and makes sure staging repositories are closed/released
  */
-class MavenCentralPublishingPlugin : Plugin<Project> {
+class MavenCentralPublishingPlugin  @Inject constructor(private val providerFactory: ProviderFactory): Plugin<Project> {
     companion object {
         const val closeAndPromoteRepositoryTaskName = "closeAndReleaseSonatypeStagingRepository"
         const val sonatypeOssRepositoryUrl = "https://oss.sonatype.org/service/local/"
@@ -63,12 +65,13 @@ class MavenCentralPublishingPlugin : Plugin<Project> {
         if(nexusPublishExtension == null) {
             throw GradleException("Could not find registered NexusPublishExtension")
         }
+
         nexusPublishExtension.packageGroup.set(nebulaOssPublishingExtension.packageGroup.get())
         nexusPublishExtension.repositories.sonatype {
             nexusUrl.set(URI(sonatypeOssRepositoryUrl))
             username.set(nebulaOssPublishingExtension.sonatypeUsername.get())
             password.set(nebulaOssPublishingExtension.sonatypePassword.get())
-            stagingProfileId.set(nebulaOssPublishingExtension.stagingProfileId.orNull)
+            stagingProfileId.set(getStagingProfileId(project))
         }
 
         project.afterEvaluate {
@@ -95,6 +98,15 @@ class MavenCentralPublishingPlugin : Plugin<Project> {
                 }
             }
         }
+    }
+
+    private fun getStagingProfileId(project: Project) : String {
+        return EnvironmentReader(providerFactory).findPropertyValue(
+            project,
+            "NETFLIX_OSS_SONATYPE_STAGING_PROFILE_ID",
+            "sonatype.stagingProfileId",
+            "sonatypeStagingProfileId"
+        ) ?: NebulaOssPublishingPlugin.netflixDefaultStagingProfile
     }
 
     private fun configureMavenCentralPomVerification(project: Project) {
