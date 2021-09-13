@@ -26,7 +26,7 @@ import javax.inject.Inject
  */
 open class NebulaOssPublishingPlugin @Inject constructor(private val providerFactory: ProviderFactory): Plugin<Project> {
     companion object {
-        const val netflixOssDefaultRepositoryBaseUrl = "https://artifactory-oss.prod.netflix.net/artifactory"
+        const val netflixOssDefaultRepositoryBaseUrl = "https://artifacts-oss.netflix.net/artifactory"
         const val netflixOssGradlePluginsRepository = "gradle-plugins"
         const val netflixOssSnapshotsRepository = "maven-oss-snapshots"
         const val netflixOssCandidatesRepository = "maven-oss-candidates"
