@@ -20,7 +20,7 @@ plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
     id("nebula.plugin-plugin") version "16.0.1"
-    kotlin("jvm") version "1.5.30"
+    kotlin("jvm") version "1.5.31"
 }
 
 description = "Nebula Netflix OSS Publishing plugin"
