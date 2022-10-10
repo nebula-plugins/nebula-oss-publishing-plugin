@@ -36,7 +36,7 @@ class MavenCentralPublishingPlugin  @Inject constructor(private val providerFact
     companion object {
         const val closeAndPromoteRepositoryTaskName = "closeAndReleaseSonatypeStagingRepository"
         const val sonatypeOssRepositoryUrl = "https://oss.sonatype.org/service/local/"
-        const val nebulaMavenPublishPluginId = "nebula.maven-publish"
+        const val nebulaMavenPublishPluginId = "com.netflix.nebula.maven-publish"
         const val nebulaPublicationName = "nebula"
     }
 

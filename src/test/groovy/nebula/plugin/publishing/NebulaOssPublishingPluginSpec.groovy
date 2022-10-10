@@ -23,7 +23,7 @@ class NebulaOssPublishingPluginSpec extends IntegrationSpec {
     def 'Apply plugin without failures'() {
         buildFile << """
             plugins {
-              id "nebula.maven-publish" version "17.3.2"
+              id "com.netflix.nebula.maven-publish" version "19.0.0"
             }
 
             group = 'test'

@@ -55,7 +55,7 @@ pluginBundle {
 gradlePlugin {
     plugins {
         create("nebulaOssPublishing") {
-            id = "nebula.oss-publishing"
+            id = "com.netflix.nebula.oss-publishing"
             displayName = "Nebula OSS Publishing plugin"
             description = "Publishes nebula projects to Netflix OSS repositories and Maven Central"
             implementationClass = "nebula.plugin.publishing.NebulaOssPublishingPlugin"

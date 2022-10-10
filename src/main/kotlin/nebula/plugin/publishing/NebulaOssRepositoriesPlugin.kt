@@ -32,7 +32,7 @@ class NebulaOssRepositoriesPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         val nebulaOssPublishingExtension = project.rootProject.extensions.findByType(NebulaOssPublishingExtension::class.java) ?: project.rootProject.extensions.create("nebulaOssPublishing", NebulaOssPublishingExtension::class.java)
-        project.plugins.withId("nebula.maven-publish") {
+        project.plugins.withId("com.netflix.nebula.maven-publish") {
             project.afterEvaluate {
                 if(!nebulaOssPublishingExtension.netflixOssRepositoryBaseUrl.isPresent
                     || !nebulaOssPublishingExtension.netflixOssRepository.isPresent

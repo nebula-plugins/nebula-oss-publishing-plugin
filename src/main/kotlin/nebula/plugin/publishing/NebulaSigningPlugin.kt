@@ -34,7 +34,7 @@ class NebulaSigningPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         val nebulaOssPublishingExtension = project.rootProject.extensions.findByType(NebulaOssPublishingExtension::class.java) ?: project.rootProject.extensions.create("nebulaOssPublishing", NebulaOssPublishingExtension::class.java)
-        project.plugins.withId("nebula.maven-publish") {
+        project.plugins.withId("com.netflix.nebula.maven-publish") {
             project.pluginManager.apply(SigningPlugin::class)
             project.afterEvaluate {
                 // Do not configure signing task if key and password are not present
