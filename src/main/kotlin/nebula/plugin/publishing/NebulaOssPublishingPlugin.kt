@@ -163,7 +163,23 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
         project.rootProject.pluginManager.withPlugin("nebula.plugin-plugin") {
             extension.netflixOssRepository.convention(netflixOssGradlePluginsRepository)
         }
+        project.rootProject.pluginManager.withPlugin("com.netflix.nebula.plugin-plugin") {
+            extension.netflixOssRepository.convention(netflixOssGradlePluginsRepository)
+        }
         project.rootProject.pluginManager.withPlugin("nebula.netflixoss") {
+            when {
+                projectExecutionHasTask(project, "snapshot") || projectExecutionHasTask(project, "devSnapshot") || projectExecutionHasTask(project, "immutableSnapshot") -> {
+                    extension.netflixOssRepository.convention(netflixOssSnapshotsRepository)
+                }
+                projectExecutionHasTask(project, "candidate") -> {
+                    extension.netflixOssRepository.convention(netflixOssCandidatesRepository)
+                }
+                projectExecutionHasTask(project, "final") -> {
+                    extension.netflixOssRepository.convention(netflixOssReleasesRepository)
+                }
+            }
+        }
+        project.rootProject.pluginManager.withPlugin("com.netflix.nebula.netflixoss") {
             when {
                 projectExecutionHasTask(project, "snapshot") || projectExecutionHasTask(project, "devSnapshot") || projectExecutionHasTask(project, "immutableSnapshot") -> {
                     extension.netflixOssRepository.convention(netflixOssSnapshotsRepository)
