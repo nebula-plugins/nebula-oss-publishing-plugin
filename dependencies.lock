@@ -7,26 +7,26 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "compileOnlyDependenciesMetadata": {
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "embeddedKotlin": {
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "implementationDependenciesMetadata": {
@@ -39,7 +39,7 @@
     },
     "integTestCompileClasspath": {
         "com.netflix.nebula:nebula-test": {
-            "locked": "10.2.0"
+            "locked": "10.3.0"
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
@@ -48,15 +48,15 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "integTestImplementationDependenciesMetadata": {
         "com.netflix.nebula:nebula-test": {
-            "locked": "10.2.0"
+            "locked": "10.3.0"
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
@@ -65,15 +65,15 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "integTestRuntimeClasspath": {
         "com.netflix.nebula:nebula-test": {
-            "locked": "10.2.0"
+            "locked": "10.3.0"
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
@@ -82,10 +82,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "jacocoAgent": {
@@ -100,36 +100,36 @@
     },
     "kotlinCompilerClasspath": {
         "org.jetbrains.kotlin:kotlin-compiler-embeddable": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "kotlinCompilerPluginClasspathIntegTest": {
         "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "kotlinCompilerPluginClasspathMain": {
         "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "kotlinCompilerPluginClasspathTest": {
         "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "kotlinKlibCommonizerClasspath": {
         "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "runtimeClasspath": {
@@ -142,7 +142,7 @@
     },
     "testCompileClasspath": {
         "com.netflix.nebula:nebula-test": {
-            "locked": "10.2.0"
+            "locked": "10.3.0"
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
@@ -151,15 +151,15 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "testImplementationDependenciesMetadata": {
         "com.netflix.nebula:nebula-test": {
-            "locked": "10.2.0"
+            "locked": "10.3.0"
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
@@ -168,15 +168,15 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     },
     "testRuntimeClasspath": {
         "com.netflix.nebula:nebula-test": {
-            "locked": "10.2.0"
+            "locked": "10.3.0"
         },
         "io.github.gradle-nexus:publish-plugin": {
             "locked": "1.0.0"
@@ -185,10 +185,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.6.21"
+            "locked": "1.7.10"
         }
     }
 }
