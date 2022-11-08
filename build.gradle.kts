@@ -19,7 +19,7 @@ import nebula.plugin.contacts.Contact
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    id("com.netflix.nebula.plugin-plugin") version "19.0.1"
+    id("com.netflix.nebula.plugin-plugin") version "19.0.2"
     kotlin("jvm") version "1.7.10"
 }
 
