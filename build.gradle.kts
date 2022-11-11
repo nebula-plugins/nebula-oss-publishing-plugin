@@ -19,7 +19,7 @@ import nebula.plugin.contacts.Contact
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    id("com.netflix.nebula.plugin-plugin") version "19.0.2"
+    id("com.netflix.nebula.plugin-plugin") version "20.0.0"
     kotlin("jvm") version "1.7.10"
 }
 
@@ -44,14 +44,6 @@ dependencies {
 }
 
 
-pluginBundle {
-    website = "https://github.com/nebula-plugins/nebula-oss-publishing-plugin"
-    vcsUrl = "https://github.com/nebula-plugins/nebula-oss-publishing-plugin.git"
-    description = "Plugins to configure common configuration"
-    description = "Uploads candidate and final artifacts to bintray with Nebula defaults"
-    tags = listOf("nebula", "nexus", "sonatype")
-}
-
 gradlePlugin {
     plugins {
         create("nebulaOssPublishing") {
@@ -59,6 +51,7 @@ gradlePlugin {
             displayName = "Nebula OSS Publishing plugin"
             description = "Publishes nebula projects to Netflix OSS repositories and Maven Central"
             implementationClass = "nebula.plugin.publishing.NebulaOssPublishingPlugin"
+            tags.set(listOf("nebula", "nexus", "sonatype"))
         }
     }
 }
