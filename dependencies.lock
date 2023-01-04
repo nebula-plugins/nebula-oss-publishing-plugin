@@ -7,26 +7,26 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         }
     },
     "compileOnlyDependenciesMetadata": {
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         }
     },
     "embeddedKotlin": {
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         }
     },
     "implementationDependenciesMetadata": {
@@ -48,10 +48,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         }
     },
     "integTestImplementationDependenciesMetadata": {
@@ -65,10 +65,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         }
     },
     "integTestRuntimeClasspath": {
@@ -82,54 +82,44 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
-        }
-    },
-    "jacocoAgent": {
-        "org.jacoco:org.jacoco.agent": {
-            "locked": "0.8.8"
-        }
-    },
-    "jacocoAnt": {
-        "org.jacoco:org.jacoco.ant": {
-            "locked": "0.8.8"
+            "locked": "1.8.0-RC2"
         }
     },
     "kotlinCompilerClasspath": {
         "org.jetbrains.kotlin:kotlin-compiler-embeddable": {
-            "locked": "1.7.10"
+            "locked": "1.8.0"
         }
     },
     "kotlinCompilerPluginClasspathIntegTest": {
         "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.7.10"
+            "locked": "1.8.0"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.7.10"
+            "locked": "1.8.0"
         }
     },
     "kotlinCompilerPluginClasspathMain": {
         "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.7.10"
+            "locked": "1.8.0"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.7.10"
+            "locked": "1.8.0"
         }
     },
     "kotlinCompilerPluginClasspathTest": {
         "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.7.10"
+            "locked": "1.8.0"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.7.10"
+            "locked": "1.8.0"
         }
     },
     "kotlinKlibCommonizerClasspath": {
         "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable": {
-            "locked": "1.7.10"
+            "locked": "1.8.0"
         }
     },
     "runtimeClasspath": {
@@ -151,10 +141,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         }
     },
     "testImplementationDependenciesMetadata": {
@@ -168,10 +158,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         }
     },
     "testRuntimeClasspath": {
@@ -185,10 +175,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.7.10"
+            "locked": "1.8.0-RC2"
         }
     }
 }

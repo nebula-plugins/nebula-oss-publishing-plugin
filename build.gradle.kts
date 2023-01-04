@@ -19,8 +19,8 @@ import nebula.plugin.contacts.Contact
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    id("com.netflix.nebula.plugin-plugin") version "20.0.0"
-    kotlin("jvm") version "1.7.10"
+    id("com.netflix.nebula.plugin-plugin") version "20.2.2"
+    kotlin("jvm") version "1.8.0"
 }
 
 description = "Nebula Netflix OSS Publishing plugin"
@@ -57,8 +57,9 @@ gradlePlugin {
 }
 
 java {
-    targetCompatibility = JavaVersion.VERSION_1_8
-    sourceCompatibility = JavaVersion.VERSION_1_8
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
 }
 
 javaCrossCompile {
