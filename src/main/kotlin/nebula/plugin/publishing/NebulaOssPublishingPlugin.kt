@@ -219,7 +219,7 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
     }
 
     private fun readEnvVariable(envVariableName: String) : String? {
-        val envVariable = providerFactory.environmentVariable(envVariableName).forUseAtConfigurationTime()
+        val envVariable = providerFactory.environmentVariable(envVariableName)
         return if(envVariable.isPresent) envVariable.get() else null
     }
 

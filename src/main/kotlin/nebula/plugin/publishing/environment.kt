@@ -25,7 +25,7 @@ class EnvironmentReader(private val providerFactory: ProviderFactory) {
     }
 
     private fun readEnvVariable(envVariableName: String) : String? {
-        val envVariable = providerFactory.environmentVariable(envVariableName).forUseAtConfigurationTime()
+        val envVariable = providerFactory.environmentVariable(envVariableName)
         return if(envVariable.isPresent) envVariable.get() else null
     }
 
