@@ -7,26 +7,26 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
         }
     },
     "compileOnlyDependenciesMetadata": {
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
         }
     },
     "embeddedKotlin": {
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
         }
     },
     "implementationDependenciesMetadata": {
@@ -48,10 +48,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
         }
     },
     "integTestImplementationDependenciesMetadata": {
@@ -65,10 +65,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
         }
     },
     "integTestRuntimeClasspath": {
@@ -82,44 +82,58 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
+        }
+    },
+    "kotlinBuildToolsApiClasspath": {
+        "org.jetbrains.kotlin:kotlin-build-tools-impl": {
+            "locked": "1.9.20"
         }
     },
     "kotlinCompilerClasspath": {
         "org.jetbrains.kotlin:kotlin-compiler-embeddable": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         }
     },
     "kotlinCompilerPluginClasspathIntegTest": {
-        "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-assignment-compiler-plugin-embeddable": {
+            "locked": "1.9.20"
+        },
+        "org.jetbrains.kotlin:kotlin-sam-with-receiver-compiler-plugin-embeddable": {
+            "locked": "1.9.20"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         }
     },
     "kotlinCompilerPluginClasspathMain": {
-        "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-assignment-compiler-plugin-embeddable": {
+            "locked": "1.9.20"
+        },
+        "org.jetbrains.kotlin:kotlin-sam-with-receiver-compiler-plugin-embeddable": {
+            "locked": "1.9.20"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         }
     },
     "kotlinCompilerPluginClasspathTest": {
-        "org.jetbrains.kotlin:kotlin-sam-with-receiver": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-assignment-compiler-plugin-embeddable": {
+            "locked": "1.9.20"
+        },
+        "org.jetbrains.kotlin:kotlin-sam-with-receiver-compiler-plugin-embeddable": {
+            "locked": "1.9.20"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         }
     },
     "kotlinKlibCommonizerClasspath": {
         "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         }
     },
     "runtimeClasspath": {
@@ -141,10 +155,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
         }
     },
     "testImplementationDependenciesMetadata": {
@@ -158,10 +172,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
         }
     },
     "testRuntimeClasspath": {
@@ -175,10 +189,10 @@
             "locked": "3.6.2"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.8.10"
+            "locked": "1.9.20"
         },
-        "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
-            "locked": "1.8.10"
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.9.20"
         }
     }
 }
