@@ -20,7 +20,7 @@ plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
     id("com.netflix.nebula.plugin-plugin") version "21.0.0"
-    kotlin("jvm") version "1.9.20"
+    kotlin("jvm") version "2.0.20"
 }
 
 description = "Nebula Netflix OSS Publishing plugin"
@@ -38,7 +38,7 @@ dependencies {
     implementation("io.github.gradle-nexus:publish-plugin:1.0.0")
     implementation("org.apache.maven:maven-model:3.6.2")
     constraints {
-        val kotlinVersion by extra("1.6.21")
+        val kotlinVersion by extra("2.0.20")
         implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     }
 }
