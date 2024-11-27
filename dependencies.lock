@@ -15,18 +15,18 @@
     },
     "compileOnlyDependenciesMetadata": {
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.9.24"
+            "locked": "2.0.20"
         },
         "org.jetbrains.kotlin:kotlin-stdlib": {
-            "locked": "1.9.24"
+            "locked": "2.0.20"
         }
     },
     "embeddedKotlin": {
         "org.jetbrains.kotlin:kotlin-reflect": {
-            "locked": "1.9.24"
+            "locked": "2.0.20"
         },
         "org.jetbrains.kotlin:kotlin-stdlib": {
-            "locked": "1.9.24"
+            "locked": "2.0.20"
         }
     },
     "implementationDependenciesMetadata": {
@@ -90,50 +90,45 @@
     },
     "kotlinCompilerClasspath": {
         "org.jetbrains.kotlin:kotlin-compiler-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         }
     },
     "kotlinCompilerPluginClasspathIntegTest": {
         "org.jetbrains.kotlin:kotlin-assignment-compiler-plugin-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         },
         "org.jetbrains.kotlin:kotlin-sam-with-receiver-compiler-plugin-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         }
     },
     "kotlinCompilerPluginClasspathMain": {
         "org.jetbrains.kotlin:kotlin-assignment-compiler-plugin-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         },
         "org.jetbrains.kotlin:kotlin-sam-with-receiver-compiler-plugin-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         }
     },
     "kotlinCompilerPluginClasspathTest": {
         "org.jetbrains.kotlin:kotlin-assignment-compiler-plugin-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         },
         "org.jetbrains.kotlin:kotlin-sam-with-receiver-compiler-plugin-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         }
     },
     "kotlinKlibCommonizerClasspath": {
         "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable": {
-            "locked": "2.0.20"
-        }
-    },
-    "kotlinNativeBundleConfiguration": {
-        "org.jetbrains.kotlin:kotlin-native-prebuilt": {
-            "locked": "2.0.20"
+            "locked": "2.1.0"
         }
     },
     "runtimeClasspath": {
