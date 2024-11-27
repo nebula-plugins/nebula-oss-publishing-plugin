@@ -1,3 +1,4 @@
+
 import nebula.plugin.contacts.Contact
 
 /*
@@ -20,7 +21,7 @@ plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
     id("com.netflix.nebula.plugin-plugin") version "21.0.0"
-    kotlin("jvm") version "2.0.20"
+    kotlin("jvm") version "2.1.0"
 }
 
 description = "Nebula Netflix OSS Publishing plugin"
