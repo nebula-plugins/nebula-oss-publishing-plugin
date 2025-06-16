@@ -1,7 +1,7 @@
 {
     "compileClasspath": {
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
@@ -21,6 +21,11 @@
             "locked": "2.0.20"
         }
     },
+    "compilePluginsBlocksPluginClasspathElements": {
+        "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
+            "locked": "2.1.0"
+        }
+    },
     "embeddedKotlin": {
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "2.0.20"
@@ -31,7 +36,7 @@
     },
     "implementationDependenciesMetadata": {
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
@@ -42,7 +47,7 @@
             "locked": "10.6.1"
         },
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
@@ -59,7 +64,7 @@
             "locked": "10.6.1"
         },
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
@@ -76,7 +81,7 @@
             "locked": "10.6.1"
         },
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
@@ -133,7 +138,7 @@
     },
     "runtimeClasspath": {
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
@@ -144,7 +149,7 @@
             "locked": "10.6.1"
         },
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
@@ -161,7 +166,7 @@
             "locked": "10.6.1"
         },
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
@@ -178,7 +183,7 @@
             "locked": "10.6.1"
         },
         "io.github.gradle-nexus:publish-plugin": {
-            "locked": "1.0.0"
+            "locked": "2.0.0"
         },
         "org.apache.maven:maven-model": {
             "locked": "3.6.2"
