@@ -35,7 +35,7 @@ import javax.inject.Inject
 class MavenCentralPublishingPlugin  @Inject constructor(private val providerFactory: ProviderFactory): Plugin<Project> {
     companion object {
         const val closeAndPromoteRepositoryTaskName = "closeAndReleaseSonatypeStagingRepository"
-        const val sonatypeOssRepositoryUrl = "https://oss.sonatype.org/service/local/"
+        const val sonatypeOssRepositoryUrl = "https://ossrh-staging-api.central.sonatype.com/service/local/"
         const val nebulaMavenPublishPluginId = "com.netflix.nebula.maven-publish"
         const val nebulaPublicationName = "nebula"
     }
