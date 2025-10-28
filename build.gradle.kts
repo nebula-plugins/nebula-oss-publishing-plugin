@@ -20,8 +20,7 @@ import nebula.plugin.contacts.Contact
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    id("com.netflix.nebula.plugin-plugin") version "22.0.2"
-    kotlin("jvm") version "2.2.0"
+    id("com.netflix.nebula.plugin-plugin") version "23.+"
 }
 
 description = "Nebula Netflix OSS Publishing plugin"
@@ -38,12 +37,9 @@ contacts {
 dependencies {
     implementation("io.github.gradle-nexus:publish-plugin:2.0.0")
     implementation("org.apache.maven:maven-model:3.6.2")
-    constraints {
-        val kotlinVersion by extra("2.0.20")
-        implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
-    }
+    testImplementation("org.spockframework:spock-core:2.3-groovy-4.0")
+    testImplementation("org.junit.vintage:junit-vintage-engine:5.14.0")
 }
-
 
 gradlePlugin {
     plugins {
@@ -54,10 +50,26 @@ gradlePlugin {
             implementationClass = "nebula.plugin.publishing.NebulaOssPublishingPlugin"
             tags.set(listOf("nebula", "nexus", "sonatype"))
         }
+        create("nebulaSigningPlugin") {
+            id = "com.netflix.nebula.signing"
+            displayName = "Nebula OSS Signing plugin"
+            description = "Signs nebula projects"
+            implementationClass = "nebula.plugin.publishing.NebulaSigningPlugin"
+            tags.set(listOf("nebula"))
+        }
     }
 }
 
+testing {
+    suites {
+        named<JvmTestSuite>("test"){
+            useJUnitJupiter()
+        }
+    }
+}
 
-javaCrossCompile {
-    disableKotlinSupport = true
+tasks.wrapper {
+    distributionType = Wrapper.DistributionType.ALL // ALL helps when debugging gradle plugins
+    gradleVersion = "9.1.0"
+    distributionSha256Sum = "b84e04fa845fecba48551f425957641074fcc00a88a84d2aae5808743b35fc85"
 }
