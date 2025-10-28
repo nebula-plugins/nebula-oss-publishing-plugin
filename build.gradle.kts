@@ -39,6 +39,9 @@ dependencies {
     implementation("org.apache.maven:maven-model:3.6.2")
     testImplementation("org.spockframework:spock-core:2.3-groovy-4.0")
     testImplementation("org.junit.vintage:junit-vintage-engine:5.14.0")
+    testImplementation("org.ajoberstar.grgit:grgit-core:4.1.1") {
+        exclude (group= "org.codehaus.groovy", module= "groovy")
+    }
 }
 
 gradlePlugin {

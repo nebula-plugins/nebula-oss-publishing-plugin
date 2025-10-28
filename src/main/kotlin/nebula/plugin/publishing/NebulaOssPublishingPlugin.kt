@@ -18,13 +18,16 @@ package nebula.plugin.publishing
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.provider.ProviderFactory
+import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
 import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.withType
 import javax.inject.Inject
 
 /**
  * Configures artifact signing and publication to NetflixOSS and Maven Central
  */
-open class NebulaOssPublishingPlugin @Inject constructor(private val providerFactory: ProviderFactory): Plugin<Project> {
+open class NebulaOssPublishingPlugin @Inject constructor(private val providerFactory: ProviderFactory) :
+    Plugin<Project> {
     companion object {
         const val netflixOssDefaultRepositoryBaseUrl = "https://artifacts-oss.netflix.net/artifactory"
         const val netflixOssGradlePluginsRepository = "gradle-plugins"
@@ -43,6 +46,16 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
         project.pluginManager.apply(MavenCentralPublishingPlugin::class)
         project.pluginManager.apply(NebulaOssRepositoriesPlugin::class)
 
+        project.plugins.withId("com.netflix.nebula.release") {
+            project.afterEvaluate {
+                project.tasks.withType<PublishToMavenRepository> {
+                    mustRunAfter(project.rootProject.tasks.named("release"))
+                }
+                project.rootProject.tasks.named("postRelease") {
+                    dependsOn(project.tasks.withType<PublishToMavenRepository>())
+                }
+            }
+        }
     }
 
     private fun setExtensionDefaults(nebulaOssPublishingExtension: NebulaOssPublishingExtension, project: Project) {
@@ -64,7 +77,7 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
             "sonatypeStagingProfileId"
         ) ?: netflixDefaultStagingProfile
 
-        if(!stagingProfileId.isNotBlank()) {
+        if (!stagingProfileId.isNotBlank()) {
             extension.stagingProfileId.convention(stagingProfileId)
         }
     }
@@ -77,14 +90,14 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
             "sonatypePackageGroup"
         ) ?: project.group.toString().split(".").take(2).joinToString(".")
 
-        if(packageGroup.isNotBlank()) {
+        if (packageGroup.isNotBlank()) {
             extension.packageGroup.convention(packageGroup)
         }
     }
 
     private fun setSigningKey(extension: NebulaOssPublishingExtension, project: Project) {
         val signingKeyFile = project.rootProject.file(signingKeyFileLocation)
-        if(signingKeyFile.exists()) {
+        if (signingKeyFile.exists()) {
             extension.signingKey.convention(signingKeyFile.readText())
         } else {
             val signingKey = findPropertyValue(
@@ -93,54 +106,64 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
                 "sonatype.signingKey",
                 "netflixOssSigningKey"
             )
-            if(!signingKey.isNullOrBlank()) {
+            if (!signingKey.isNullOrBlank()) {
                 extension.signingKey.convention(signingKey)
             }
         }
     }
 
     private fun setSigningPassword(extension: NebulaOssPublishingExtension, project: Project) {
-        val signingPassword = findPropertyValue(project,
+        val signingPassword = findPropertyValue(
+            project,
             "NETFLIX_OSS_SIGNING_PASSWORD",
             "sonatype.signingPassword",
-            "netflixOssSigningPassword")
-        if(!signingPassword.isNullOrBlank()) {
+            "netflixOssSigningPassword"
+        )
+        if (!signingPassword.isNullOrBlank()) {
             extension.signingPassword.convention(signingPassword)
         }
     }
 
     private fun setNetflixOssCredentials(extension: NebulaOssPublishingExtension, project: Project) {
-        val netflixOssUsername = findPropertyValue(project,
+        val netflixOssUsername = findPropertyValue(
+            project,
             "NETFLIX_OSS_REPO_USERNAME",
             "netflixOss.username",
-            "netflixOssUsername")
-        if(!netflixOssUsername.isNullOrBlank()) {
+            "netflixOssUsername"
+        )
+        if (!netflixOssUsername.isNullOrBlank()) {
             extension.netflixOssUsername.convention(netflixOssUsername)
         }
 
-        val netflixOssPassword = findPropertyValue(project,
+        val netflixOssPassword = findPropertyValue(
+            project,
             "NETFLIX_OSS_REPO_PASSWORD",
             "netflixOss.password",
-            "netflixOssPassword")
-        if(!netflixOssPassword.isNullOrBlank()) {
+            "netflixOssPassword"
+        )
+        if (!netflixOssPassword.isNullOrBlank()) {
             extension.netflixOssPassword.convention(netflixOssPassword)
         }
     }
 
     private fun setMavenCentralCredentials(extension: NebulaOssPublishingExtension, project: Project) {
-        val sonatypeUsername = findPropertyValue(project,
+        val sonatypeUsername = findPropertyValue(
+            project,
             "NETFLIX_OSS_SONATYPE_USERNAME",
             "sonatype.username",
-            "sonatypeUsername")
-        if(!sonatypeUsername.isNullOrBlank()) {
+            "sonatypeUsername"
+        )
+        if (!sonatypeUsername.isNullOrBlank()) {
             extension.sonatypeUsername.convention(sonatypeUsername)
         }
 
-        val sonatypePassword = findPropertyValue(project,
+        val sonatypePassword = findPropertyValue(
+            project,
             "NETFLIX_OSS_SONATYPE_PASSWORD",
             "sonatype.password",
-            "sonatypePassword")
-        if(!sonatypePassword.isNullOrBlank()) {
+            "sonatypePassword"
+        )
+        if (!sonatypePassword.isNullOrBlank()) {
             extension.sonatypePassword.convention(sonatypePassword)
         }
     }
@@ -152,7 +175,7 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
             "netflixOss.repositoryBaseUrl",
             "netflixOssRepositoryBaseUrl"
         )
-        if(!repositoryBaseUrl.isNullOrBlank()) {
+        if (!repositoryBaseUrl.isNullOrBlank()) {
             extension.netflixOssRepositoryBaseUrl.convention(repositoryBaseUrl)
         } else {
             extension.netflixOssRepositoryBaseUrl.convention(netflixOssDefaultRepositoryBaseUrl)
@@ -195,32 +218,38 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
     }
 
     private fun projectExecutionHasTask(project: Project, task: String): Boolean {
-        return project.gradle.startParameter.taskNames.contains(task) || project.gradle.startParameter.taskNames.contains(":${task}")
+        return project.gradle.startParameter.taskNames.contains(task) || project.gradle.startParameter.taskNames.contains(
+            ":${task}"
+        )
     }
 
-    private fun findPropertyValue(project: Project,
-                                  envVariableName: String,
-                                  namespacedPropertyName: String,
-                                  propertyName: String
-    ) : String? {
+    private fun findPropertyValue(
+        project: Project,
+        envVariableName: String,
+        namespacedPropertyName: String,
+        propertyName: String
+    ): String? {
         val propertyValueFromEnv = readEnvVariable(envVariableName)
         return when {
             propertyValueFromEnv != null -> {
                 propertyValueFromEnv
             }
+
             project.hasProperty(propertyName) -> {
                 project.prop(propertyName)
             }
+
             project.hasProperty(namespacedPropertyName) -> {
                 project.prop(namespacedPropertyName)
             }
+
             else -> null
         }
     }
 
-    private fun readEnvVariable(envVariableName: String) : String? {
+    private fun readEnvVariable(envVariableName: String): String? {
         val envVariable = providerFactory.environmentVariable(envVariableName)
-        return if(envVariable.isPresent) envVariable.get() else null
+        return if (envVariable.isPresent) envVariable.get() else null
     }
 
     private fun Project.prop(s: String): String? = project.findProperty(s) as String?
