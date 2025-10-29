@@ -66,11 +66,11 @@ class MavenCentralPublishingPlugin  @Inject constructor(private val providerFact
             throw GradleException("Could not find registered NexusPublishExtension")
         }
 
-        nexusPublishExtension.packageGroup.set(nebulaOssPublishingExtension.packageGroup.get())
+        nexusPublishExtension.packageGroup.set(nebulaOssPublishingExtension.packageGroup)
         nexusPublishExtension.repositories.sonatype {
             nexusUrl.set(URI(sonatypeOssRepositoryUrl))
-            username.set(nebulaOssPublishingExtension.sonatypeUsername.get())
-            password.set(nebulaOssPublishingExtension.sonatypePassword.get())
+            username.set(nebulaOssPublishingExtension.sonatypeUsername)
+            password.set(nebulaOssPublishingExtension.sonatypePassword)
             stagingProfileId.set(getStagingProfileId(project))
         }
 
