@@ -1,10 +1,7 @@
 package nebula.plugin.publishing
 
+import nebula.test.dsl.*
 import nebula.test.dsl.TestKitAssertions.assertThat
-import nebula.test.dsl.plugins
-import nebula.test.dsl.rootProject
-import nebula.test.dsl.testProject
-import nebula.test.dsl.version
 import org.gradle.testkit.runner.TaskOutcome
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
@@ -17,26 +14,23 @@ internal class NebulaOssPublishingPluginTest {
     @TempDir
     lateinit var remoteGitDir: File
 
-    @Test
-    fun `test single project final`() {
-        val runner = withGitTag(projectDir, remoteGitDir, "v0.0.1") {
-            testProject(projectDir) {
-                rootProject {
-                    plugins {
-                        id("java")
-                        // this plugin has behavior dependent on the existence of the contacts plugin
-                        id("com.netflix.nebula.contacts") version "latest.release"
-                        // this plugin has behavior dependent on the existence of the info plugin
-                        id("com.netflix.nebula.info") version "latest.release"
-                        id("com.netflix.nebula.maven-publish") version "latest.release"
-                        // this plugin has behavior dependent on the existence of the release plugin
-                        id("com.netflix.nebula.release") version "latest.release"
-                        id("com.netflix.nebula.maven-apache-license") version "latest.release"
-                        id("com.netflix.nebula.oss-publishing")
-                    }
-                    //language=kotlin
-                    rawBuildScript(
-                        """
+    private fun TestProjectBuilder.sampleSingleProjectSetup() {
+        rootProject {
+            plugins {
+                id("java")
+                // this plugin has behavior dependent on the existence of the contacts plugin
+                id("com.netflix.nebula.contacts") version "latest.release"
+                // this plugin has behavior dependent on the existence of the info plugin
+                id("com.netflix.nebula.info") version "latest.release"
+                id("com.netflix.nebula.maven-publish") version "latest.release"
+                // this plugin has behavior dependent on the existence of the release plugin
+                id("com.netflix.nebula.release") version "latest.release"
+                id("com.netflix.nebula.maven-apache-license") version "latest.release"
+                id("com.netflix.nebula.oss-publishing")
+            }
+            //language=kotlin
+            rawBuildScript(
+                """
 group = "test"
 description = "description"
 nebulaOssPublishing {
@@ -53,8 +47,15 @@ contacts {
 $DISABLE_PUBLISH_TASKS
 $DISABLE_MAVEN_CENTRAL_TASKS
 """
-                    )
-                }
+            )
+        }
+    }
+
+    @Test
+    fun `test single project final`() {
+        val runner = withGitTag(projectDir, remoteGitDir, "v0.0.1") {
+            testProject(projectDir) {
+                sampleSingleProjectSetup()
             }
         }
         val result = runner.run(
@@ -87,5 +88,16 @@ $DISABLE_MAVEN_CENTRAL_TASKS
         assertThat(result.task(":release")).hasOutcome(TaskOutcome.SKIPPED)
         assertThat(result.task(":postRelease")).hasOutcome(TaskOutcome.SUCCESS)
         assertThat(result.task(":final")).hasOutcome(TaskOutcome.SUCCESS)
+    }
+
+    @Test
+    fun `test build without git tag`() {
+        val runner = testProject(projectDir) {
+            sampleSingleProjectSetup()
+        }
+        val result = runner.run("build", "--stacktrace")
+        assertThat(result.task(":release")).isNull()
+        assertThat(result.task(":postRelease")).isNull()
+        assertThat(result.task(":build")).hasOutcome(TaskOutcome.SUCCESS)
     }
 }
