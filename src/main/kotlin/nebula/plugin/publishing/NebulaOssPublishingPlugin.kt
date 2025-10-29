@@ -48,12 +48,13 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
 
         project.plugins.withId("com.netflix.nebula.release") {
             project.afterEvaluate {
-                project.tasks.withType<PublishToMavenRepository> {
-                    mustRunAfter(project.rootProject.tasks.named("release"))
+                if(project.rootProject.tasks.findByName("release") != null) {
+                    project.tasks.withType<PublishToMavenRepository> {
+                        mustRunAfter(project.rootProject.tasks.named("release"))
+                    }
                 }
-                project.rootProject.tasks.named("postRelease") {
-                    dependsOn(project.tasks.withType<PublishToMavenRepository>())
-                }
+                project.rootProject.tasks.findByName("postRelease")
+                    ?.dependsOn(project.tasks.withType<PublishToMavenRepository>())
             }
         }
     }
@@ -194,9 +195,11 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
                 projectExecutionHasTask(project, "snapshot") || projectExecutionHasTask(project, "devSnapshot") || projectExecutionHasTask(project, "immutableSnapshot") -> {
                     extension.netflixOssRepository.convention(netflixOssSnapshotsRepository)
                 }
+
                 projectExecutionHasTask(project, "candidate") -> {
                     extension.netflixOssRepository.convention(netflixOssCandidatesRepository)
                 }
+
                 projectExecutionHasTask(project, "final") -> {
                     extension.netflixOssRepository.convention(netflixOssReleasesRepository)
                 }
@@ -207,9 +210,11 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
                 projectExecutionHasTask(project, "snapshot") || projectExecutionHasTask(project, "devSnapshot") || projectExecutionHasTask(project, "immutableSnapshot") -> {
                     extension.netflixOssRepository.convention(netflixOssSnapshotsRepository)
                 }
+
                 projectExecutionHasTask(project, "candidate") -> {
                     extension.netflixOssRepository.convention(netflixOssCandidatesRepository)
                 }
+
                 projectExecutionHasTask(project, "final") -> {
                     extension.netflixOssRepository.convention(netflixOssReleasesRepository)
                 }
