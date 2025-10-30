@@ -18,10 +18,7 @@
 package nebula.plugin.publishing
 
 import nebula.test.dsl.TestKitAssertions.assertThat
-import nebula.test.dsl.plugins
-import nebula.test.dsl.rootProject
-import nebula.test.dsl.testProject
-import nebula.test.dsl.version
+import nebula.test.dsl.*
 import org.gradle.testkit.runner.TaskOutcome
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
@@ -116,5 +113,60 @@ afterEvaluate {
 
         assertThat(result.task(":signNebulaPublication")).hasOutcome(TaskOutcome.SKIPPED)
         assertThat(result.task(":signCustomMavenPublication")).isNull()
+    }
+
+    @Test
+    fun `gradle plugin signs nebula publication and corresponding plugin marker`() {
+        val runner = testProject(projectDir) {
+            rootProject {
+                plugins {
+                    id("com.netflix.nebula.maven-publish") version ("19.0.0")
+                    id("java-gradle-plugin")
+                    id("com.netflix.nebula.signing")
+                }
+                src {
+                    main {
+                        java("MyPlugin.java","""
+import org.gradle.api.Plugin;
+import org.gradle.api.Project;
+
+public class MyPlugin implements Plugin<Project> {
+    public void apply(Project project){
+    }
+}
+""")
+                    }
+                }
+                rawBuildScript(
+                    //language=kotlin
+                    """
+nebulaOssPublishing {
+    signingKey = "something"
+    signingPassword = "something"
+}
+gradlePlugin {
+    plugins {
+        create("myPlugin") {
+            id = "com.netflix.test"
+            displayName = "Test plugin"
+            description = "Test description"
+            implementationClass = "MyPlugin"
+        }
+    }
+}
+tasks.named("publishNebulaPublicationToMavenLocal") { onlyIf { false }}
+afterEvaluate {
+    tasks.named("signNebulaPublication") { onlyIf { false }}
+    //tasks.named("signMyPluginMarkerMavenPublication") { onlyIf { false }}
+}
+"""
+                )
+            }
+        }
+
+        val result = runner.run("publishNebulaPublicationToMavenLocal")
+projectDir.resolve("build/publications/myPluginPluginMarkerMaven")
+        assertThat(result.task(":signNebulaPublication")).hasOutcome(TaskOutcome.SKIPPED)
+        assertThat(result.task(":signMyPluginMarkerMavenPublication")).hasOutcome(TaskOutcome.SKIPPED)
     }
 }

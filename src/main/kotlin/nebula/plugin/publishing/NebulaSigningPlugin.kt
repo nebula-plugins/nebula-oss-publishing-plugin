@@ -45,8 +45,11 @@ class NebulaSigningPlugin : Plugin<Project> {
                 val signingExtension = project.extensions.getByType(SigningExtension::class.java)
                 val publishingExtension = project.extensions.getByType(PublishingExtension::class.java)
                 signingExtension.useInMemoryPgpKeys(nebulaOssPublishingExtension.signingKey.get(), nebulaOssPublishingExtension.signingPassword.get())
-                // Only sign nebula publication
-                signingExtension.sign(publishingExtension.publications.getByName(nebulaPublicationName))
+                // Only sign nebula publication and plugin markers
+                val publicationsToSign = publishingExtension.publications.filter {
+                    it.name == nebulaPublicationName || it.name.endsWith("PluginMarkerMaven")
+                }
+                signingExtension.sign(*publicationsToSign.toTypedArray())
 
                 project.tasks.withType(PublishToMavenRepository::class.java).configureEach {
                     this.dependsOn(project.tasks.withType(Sign::class.java))
