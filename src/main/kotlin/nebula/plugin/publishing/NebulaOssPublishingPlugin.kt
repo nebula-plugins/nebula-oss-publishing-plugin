@@ -57,6 +57,19 @@ open class NebulaOssPublishingPlugin @Inject constructor(private val providerFac
                     ?.dependsOn(project.tasks.withType<PublishToMavenRepository>())
             }
         }
+
+        project.plugins.withId("com.gradle.plugin-publish"){
+            project.afterEvaluate {
+                project.tasks.findByName("publishPluginMavenPublicationToNetflixOSSRepository")?.onlyIf {
+                    project.logger.info("disabling gradle plugin publish to Netflix OSS to prevent duplicate")
+                    false
+                }
+                project.tasks.findByName("publishPluginMavenPublicationToSonatypeRepository")?.onlyIf {
+                    project.logger.info("disabling gradle plugin publish to Sonatype to prevent duplicate")
+                    false
+                }
+            }
+        }
     }
 
     private fun setExtensionDefaults(nebulaOssPublishingExtension: NebulaOssPublishingExtension, project: Project) {

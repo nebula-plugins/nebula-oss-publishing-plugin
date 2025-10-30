@@ -73,6 +73,7 @@ $DISABLE_MAVEN_CENTRAL_TASKS
 group = "test"
 description = "description"
 $DISABLE_PUBLISH_TASKS
+$MOCK_SIGN
 """
             )
         }
@@ -94,6 +95,7 @@ $DISABLE_PUBLISH_TASKS
 group = "test"
 description = "description"
 $DISABLE_PUBLISH_TASKS
+$MOCK_SIGN
 """
             )
         }

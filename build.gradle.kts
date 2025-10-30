@@ -42,6 +42,7 @@ dependencies {
     testImplementation("org.ajoberstar.grgit:grgit-core:4.1.1") {
         exclude (group= "org.codehaus.groovy", module= "groovy")
     }
+    testImplementation("org.mock-server:mockserver-netty:5.15.0")
 }
 
 gradlePlugin {
@@ -67,6 +68,11 @@ testing {
     suites {
         named<JvmTestSuite>("test"){
             useJUnitJupiter()
+            targets.all {
+                testTask.configure {
+                    maxParallelForks = 2
+                }
+            }
         }
     }
 }
