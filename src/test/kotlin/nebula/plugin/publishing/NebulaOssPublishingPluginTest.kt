@@ -46,6 +46,7 @@ contacts {
 }
 $DISABLE_PUBLISH_TASKS
 $DISABLE_MAVEN_CENTRAL_TASKS
+$MOCK_SIGN
 """
             )
         }
