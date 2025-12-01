@@ -19,8 +19,8 @@ internal class MultiprojectIntegrationTest {
             pluginManagement {
                 plugins {
                     id("com.netflix.nebula.contacts") version "latest.release"
-                    id("com.netflix.nebula.maven-publish") version "22.1.0"
-                    id("com.netflix.nebula.maven-apache-license") version "22.1.0"
+                    id("com.netflix.nebula.maven-publish") version "23.0.0"
+                    id("com.netflix.nebula.maven-apache-license") version "23.0.0"
                     id("com.netflix.nebula.info") version "latest.release"
                     id("com.netflix.nebula.release") version "latest.release"
                 }
