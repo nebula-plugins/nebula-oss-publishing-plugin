@@ -50,10 +50,10 @@ internal class NebulaOssPublishingGradleIntegrationTest {
                 id("com.netflix.nebula.contacts") version "latest.release"
                 // this plugin has behavior dependent on the existence of the info plugin
                 id("com.netflix.nebula.info") version "latest.release"
-                id("com.netflix.nebula.maven-publish") version "latest.release"
+                id("com.netflix.nebula.maven-publish") version "23.0.0"
                 // this plugin has behavior dependent on the existence of the release plugin
                 id("com.netflix.nebula.release") version "latest.release"
-                id("com.netflix.nebula.maven-apache-license") version "latest.release"
+                id("com.netflix.nebula.maven-apache-license") version  "23.0.0"
                 id("com.netflix.nebula.oss-publishing")
                 id("com.gradle.plugin-publish") version "2.0.0"
             }
